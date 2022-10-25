@@ -1,0 +1,36 @@
+passo 1, instalar python:
+
+passo 2, instalar e importar bibliotecas:
+pip install folium
+
+import folium
+import pandas
+from folium.plugins import HeatMap
+
+passo 3, importar arquivo que será usado no mapa:
+pesos = pd.read_excel('pesos.xlsx')
+coordenadas = pd.read_excel('coordenadas.xlsx')
+final = pd.merge(pesos, coordenadas)
+
+'estamos usando esse merge caso um arquivo contenha locais com coordenadas e o outro contenha os índices de criminalidade para cada coordenada, assim conseguimos unir as informações de pesos no mapa de calor juntamente com as localidades '
+
+passo 4, criar o mapa:
+
+mapa = folium.map(location=[lat,lng],zoom_start=z)
+
+'aqui conseguimos criar o mapa, definir posição de início e zoom adequado, seria possível também já abrir o mapa orientado para a posição do usuário'
+
+passo 5, apresentar informações no mapa:
+
+HeatMap([[lat1,long1,weigth1],
+[lat2,long2,weigth2],
+[lat3,long3,weigth3], etc], radius=r).add_to(mapa)
+
+'basicamente é uma lista com coordenadas e pesos, nesse exemplo estão listas mas a idéia é que já usaremos o dataframe "final" declarado anteriormente'
+
+passo 6, salvar mapa:
+mapa.save('nome.html')
+
+'basicamente esse é o comando que gera o nosso mapa, usaremos essa biblioteca gráfica do tutorial para ser disponibilizada em um frameword de flask em um site que será acessado pelo usuário'
+
+

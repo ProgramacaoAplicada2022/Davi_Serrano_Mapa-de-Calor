@@ -1,0 +1,17 @@
+import pandas as pd 
+import numpy as np
+from folium import folium
+from folium.plugins import HeatMap
+
+combined_ocorrencias = pd.read_excel('combined_ocorrencias.xlsx')
+
+mapa = folium.Map(location=[-9.026078, -70.441312], zoom_start = 8)
+
+data = []
+
+for index, linha in combined_ocorrencias.iterrows():
+    data.append([linha['LAT'],linha['LONG'], linha['Vítimas']])
+
+HeatMap(data).add_to(mapa)
+
+mapa.save('mapa.html')

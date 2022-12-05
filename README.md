@@ -59,7 +59,7 @@
 # Telas do aplicativo
 
 ### Mapa funcional
-![Tela de login](tela_final.jpg)
-![Mapa Funcional](tela_final2.jpg)
+![](tela_final.jpeg)
+![](tela_final2.jpeg)
 
 
